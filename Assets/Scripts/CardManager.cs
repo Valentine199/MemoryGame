@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     GameObject manager;
+    private Animator animator;
 
     bool isFliped = false; // If flipped = true then you can see the picture NOW
 
