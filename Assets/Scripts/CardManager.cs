@@ -21,35 +21,28 @@ public class CardManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
-        
-            if (!isFliped && !(manager.GetComponent<PairChacker>().TwoUp())) //picture visible
-            {
+        if (!isFliped && !(manager.GetComponent<PairChacker>().TwoUp())) //picture visible
+        {
             //transform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetTrigger("TrShow");
 
-                manager.GetComponent<PairChacker>().AddSelection(id);
+            manager.GetComponent<PairChacker>().AddSelection(id);
 
-                if (manager.GetComponent<PairChacker>().TwoUp())
-                {
-                    manager.GetComponent<PairChacker>().CheckPair();
-                }
-                
-            isFliped = true;
-            }
-        else if (!isFound && isFliped) //picture invisible
+            if (manager.GetComponent<PairChacker>().TwoUp())
             {
+                manager.GetComponent<PairChacker>().CheckPair();
+            }
+
+            isFliped = true;
+        }
+        else if (!isFound && isFliped) //picture invisible
+        {
             animator.SetTrigger("TrHide");
             //transform.rotation = Quaternion.identity;
 
-                manager.GetComponent<PairChacker>().RemoveSelection(id);
+            manager.GetComponent<PairChacker>().RemoveSelection(id);
 
             isFliped = false;
-            }
-
-
-            isFliped = !isFliped; 
-        
-
+        }
     }
 }
