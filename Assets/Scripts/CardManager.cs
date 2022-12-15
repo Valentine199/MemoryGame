@@ -34,14 +34,16 @@ public class CardManager : MonoBehaviour
                     manager.GetComponent<PairChacker>().CheckPair();
                 }
                 
-
+            isFliped = true;
             }
-            else if(!isFound) //picture invisible
+        else if (!isFound && isFliped) //picture invisible
             {
             animator.SetTrigger("TrHide");
             //transform.rotation = Quaternion.identity;
 
                 manager.GetComponent<PairChacker>().RemoveSelection(id);
+
+            isFliped = false;
             }
 
 
