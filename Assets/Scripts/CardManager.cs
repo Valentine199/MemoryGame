@@ -15,6 +15,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         manager = GameObject.Find("GameController");
+        animator = GetComponent<Animator>();
     }
 
     private void OnMouseDown()
@@ -23,7 +24,8 @@ public class CardManager : MonoBehaviour
         
             if (!isFliped && !(manager.GetComponent<PairChacker>().TwoUp())) //picture visible
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+            //transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetTrigger("TrShow");
 
                 manager.GetComponent<PairChacker>().AddSelection(id);
 
@@ -36,7 +38,9 @@ public class CardManager : MonoBehaviour
             }
             else if(!isFound) //picture invisible
             {
-                transform.rotation = Quaternion.identity;
+            animator.SetTrigger("TrHide");
+            //transform.rotation = Quaternion.identity;
+
                 manager.GetComponent<PairChacker>().RemoveSelection(id);
             }
 
