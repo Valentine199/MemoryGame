@@ -21,28 +21,46 @@ public class CardManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!isFliped && !(manager.GetComponent<PairChacker>().TwoUp())) //picture visible
+        if (!(manager.GetComponent<PairChacker>().TwoUp()))
         {
-            //transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetTrigger("TrShow");
 
-            manager.GetComponent<PairChacker>().AddSelection(id);
-
-            if (manager.GetComponent<PairChacker>().TwoUp())
+            if (!isFliped ) //picture visible
             {
-                manager.GetComponent<PairChacker>().CheckPair();
+                ShowCard();
+
+                if (manager.GetComponent<PairChacker>().TwoUp())
+                {
+                    manager.GetComponent<PairChacker>().CheckPair();
+                }
             }
-
-            isFliped = true;
+            else if (!isFound && isFliped) //picture invisible
+            {
+                HideCard();
+            } 
         }
-        else if (!isFound && isFliped) //picture invisible
+        else
         {
-            animator.SetTrigger("TrHide");
-            //transform.rotation = Quaternion.identity;
-
-            manager.GetComponent<PairChacker>().RemoveSelection(id);
-
-            isFliped = false;
+            manager.GetComponent<PairChacker>().RemoveAllSelection();
         }
+    }
+
+    public void HideCard()
+    {
+        animator.SetTrigger("TrHide");
+        //transform.rotation = Quaternion.identity;
+
+        manager.GetComponent<PairChacker>().RemoveSelection(id);
+
+        isFliped = false;
+    }
+
+    public void ShowCard()
+    {
+        //transform.rotation = Quaternion.Euler(0, 180, 0);
+        animator.SetTrigger("TrShow");
+
+        manager.GetComponent<PairChacker>().AddSelection(id);
+
+        isFliped = true;
     }
 }
