@@ -28,6 +28,50 @@ public class BoardSetup : MonoBehaviour
     //planed game sizes (heightxwidth) 3x2 4x3 4x4 5x4 6x5 8x5 8x6 9x6
     void Start()
     {
+        switch (pairDb*2)
+        {
+            //3
+            case 6:
+                height = 3;
+                width = 2;
+                break;
+            //6
+            case 12:
+                height = 4;
+                width = 3;
+                break;
+            //8
+            case 16:
+                height = 4;
+                width = 4;
+                break;
+            //10
+            case 20:
+                height = 5;
+                width = 4;
+                break;
+            //15
+            case 30:
+                height = 6;
+                width = 5;
+                break;
+            //20
+            case 40:
+                height = 8;
+                width = 5;
+                break;
+            //24
+            case 48:
+                height = 8;
+                width = 6;
+                break;
+            //27
+            case 54:
+                height = 9;
+                width = 6;
+                break;
+        }
+        mainCamera.fieldOfView = 60;
         Debug.Log(Screen.width);
 
         for (int i = 0; i < pairDb / 2; i++)
