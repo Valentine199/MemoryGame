@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PairChacker : MonoBehaviour
 {
+    [SerializeField] GameObject endScene;
+
     public int[] selectedCards;
     public List<GameObject> cards;
+
 
     private void Awake()
     {
@@ -23,7 +26,13 @@ public class PairChacker : MonoBehaviour
         if (isPair)
         {
             freezeCards();
-            //do celebration
+            
+            //Finishes the game
+            if (cards.TrueForAll(x => x.GetComponent<CardManager>().isFound))
+            {
+                endScene.SetActive(true);
+            }
+
             for (int i = 0; i < selectedCards.Length; i++)
             {
                 selectedCards[i] = -1; //eldobja az összes indexet
