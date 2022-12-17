@@ -6,6 +6,7 @@ using System;
 public class BoardSetup : MonoBehaviour
 {
     [Header("Cock")]
+    [SerializeField] Camera mainCamera;
     [SerializeField] GameObject card;
     [SerializeField] int pairDb;
 
