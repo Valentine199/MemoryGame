@@ -8,13 +8,10 @@ public class BoardSetup : MonoBehaviour
     [Header("Cock")]
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject card;
-    [SerializeField] int pairDb;
+    [SerializeField] int pairDb;   
 
-    
     List<int> indexes;
     System.Random rng = new();
-    float x = -5f;
-    float y = 4.5f;
     int cardidx = 0;
     float gap = 0.1f;
     float cardsize = 2;
@@ -102,7 +99,7 @@ public class BoardSetup : MonoBehaviour
                 x += cardsize+gap;
             }
             y -= cardsize+gap;
-        }
+        }      
     }
 
     private void AddCardToBoard()
@@ -116,7 +113,7 @@ public class BoardSetup : MonoBehaviour
 
         newCard.GetComponent<CardManager>().id = cardidx;
         cardidx++;
-
+        
         GetComponent<PairChacker>().cards.Add(newCard);
     }
 
@@ -139,7 +136,7 @@ public class BoardSetup : MonoBehaviour
         }
         tmpcard.SetActive(false);
         Debug.Log(availableSprites.Count);
-
+        
         indexes = new List<int>();
         for (int i = 0; i < pairDb; i++)
         {
@@ -149,13 +146,9 @@ public class BoardSetup : MonoBehaviour
                 r = rng.Next(0, availableSprites.Count);
             } while (indexes.Contains(r));           
             for (int j = 0; j < 2; j++)
-        {
+            {
                 indexes.Add(r);
             }            
-        }
+        }       
     }
-
-
-
-
 }
