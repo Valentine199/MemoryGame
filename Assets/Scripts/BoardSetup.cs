@@ -95,13 +95,13 @@ public class BoardSetup : MonoBehaviour
         
         for (int i = 0; i < height; i++)
         {
-            x = -5;
-            for (int j = 0; j < pairDb; j++)
+            x = basex;
+            for (int j = 0; j < width; j++)
             {
                 AddCardToBoard();
-                x += 3;
+                x += cardsize+gap;
             }
-            y -= 3.5f;
+            y -= cardsize+gap;
         }
     }
 
