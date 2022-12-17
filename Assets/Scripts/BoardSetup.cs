@@ -131,11 +131,27 @@ public class BoardSetup : MonoBehaviour
 
     private void Awake()
     {
+        GameObject tmpcard = Instantiate(card);
+        List<Sprite> availableSprites = new List<Sprite>();
+        foreach (var item in tmpcard.GetComponent<CardSetup>().availableSprites)
+        {
+            availableSprites.Add(item);
+        }
+        tmpcard.SetActive(false);
+        Debug.Log(availableSprites.Count);
 
         indexes = new List<int>();
-        for (int i = 0; i < pairDb * 2; i++)
+        for (int i = 0; i < pairDb; i++)
         {
-            indexes.Add(i % pairDb);
+            int r;
+            do
+            {
+                r = rng.Next(0, availableSprites.Count);
+            } while (indexes.Contains(r));           
+            for (int j = 0; j < 2; j++)
+        {
+                indexes.Add(r);
+            }            
         }
     }
 
