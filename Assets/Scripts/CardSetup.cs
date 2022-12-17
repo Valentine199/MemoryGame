@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CardSetup : MonoBehaviour
 {
-    [SerializeField] List<Sprite> availableSprites;
+    public List<Sprite> availableSprites;
     
     public SpriteRenderer picture;
-    
+
     public void SetPicture(int idx)
     {
         picture.sprite = availableSprites[idx];       
