@@ -73,8 +73,27 @@ public class BoardSetup : MonoBehaviour
         }
         mainCamera.fieldOfView = 60;
         Debug.Log(Screen.width);
+        if (height%2==0)
+        {
+            y = -cardsize / 2 + gap / 2 + (height / 2 * cardsize) + (height / 4 * gap);
+        }
+        else
+        {
+            //y = (height / 2 * cardsize) - gap * height;
+            y = (height * (cardsize + gap))/2-(cardsize+gap)/2;
+        }
+        if (width%2==0)
+        {
 
-        for (int i = 0; i < pairDb / 2; i++)
+            basex = cardsize/2-gap / 2 - (width / 2*cardsize)-(width/4*gap);
+        }
+        else
+        {
+            basex = -(width * (cardsize + gap)) / 2 + (cardsize + gap) / 2;
+
+        }
+        
+        for (int i = 0; i < height; i++)
         {
             x = -5;
             for (int j = 0; j < pairDb; j++)
