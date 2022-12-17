@@ -16,8 +16,16 @@ public class BoardSetup : MonoBehaviour
     float x = -5f;
     float y = 4.5f;
     int cardidx = 0;
+    float gap = 0.1f;
+    float cardsize = 2;
+    float x;
+    float basex;
+    float y;
+    float height;
+    float width;
 
 
+    //planed game sizes (heightxwidth) 3x2 4x3 4x4 5x4 6x5 8x5 8x6 9x6
     void Start()
     {
         Debug.Log(Screen.width);
