@@ -15,6 +15,7 @@ public class PairChacker : MonoBehaviour
     {
         selectedCards = new int[] { -1, -1 };
         cards = new List<GameObject>();
+        endScene.SetActive(false);
     }
 
     public void CheckPair()
@@ -35,14 +36,14 @@ public class PairChacker : MonoBehaviour
 
             for (int i = 0; i < selectedCards.Length; i++)
             {
-                selectedCards[i] = -1; //eldobja az összes indexet
+                selectedCards[i] = -1; //Drops indexes
             }
         }        
     }
 
     public void RemoveAllSelection()
     {
-        //Visszaforgat majd eldobja az indexet
+        //Deselects all indexes, and hides them
         for (int i = 0; i < selectedCards.Length; i++)
         {
             cards[selectedCards[i]].GetComponent<CardManager>().HideCard();

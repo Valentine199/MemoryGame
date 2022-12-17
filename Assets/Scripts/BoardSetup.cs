@@ -19,6 +19,8 @@ public class BoardSetup : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Screen.width);
+
         for (int i = 0; i < pairDb / 2; i++)
         {
             x = -5;

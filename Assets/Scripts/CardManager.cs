@@ -36,7 +36,11 @@ public class CardManager : MonoBehaviour
             else if (!isFound && isFliped) //picture invisible
             {
                 HideCard();
-            } 
+            }
+            else
+            {
+                // Shake Card
+            }
         }
         else
         {
