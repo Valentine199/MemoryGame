@@ -123,7 +123,7 @@ public class BoardSetup : MonoBehaviour
         GameObject newCard = Instantiate(card);
        
         
-        newCard.transform.position = new Vector3(x, y, 0);
+        //newCard.transform.position = new Vector3(x, y, 0);
         int idx = GetSpriteIdx();
         newCard.GetComponent<CardSetup>().SetPicture(idx);
 
