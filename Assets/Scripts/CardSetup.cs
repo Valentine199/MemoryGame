@@ -6,7 +6,7 @@ public class CardSetup : MonoBehaviour
 {
     public List<Sprite> availableSprites;
     
-    public SpriteRenderer picture;
+    //public SpriteRenderer picture;
 
     public void SetPicture(int idx)
     {
