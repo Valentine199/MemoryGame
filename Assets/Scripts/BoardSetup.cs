@@ -131,6 +131,8 @@ public class BoardSetup : MonoBehaviour
         cardidx++;
 
         newCard.transform.parent = board.transform;
+        newCard.transform.localScale = new Vector2(1, 1);
+        
         
         GetComponent<PairChacker>().cards.Add(newCard);
     }
