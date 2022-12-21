@@ -1025,6 +1025,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3471849425159124086, guid: eda9d14365a4e374a9ae0b83a80f65a5, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 2292575132655976451, guid: 53ed6dcb4987b9c4e842c4b35559e862, type: 3}
+    - target: {fileID: 3471849425159124086, guid: eda9d14365a4e374a9ae0b83a80f65a5, type: 3}
       propertyPath: board
       value: 
       objectReference: {fileID: 93341569}
