@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class BoardSetup : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class BoardSetup : MonoBehaviour
     //planed game sizes (heightxwidth) 3x2 4x3 4x4 5x4 6x5 8x5 8x6 9x6
     void Start()
     {
-        /* switch (pairDb*2)
+         switch (pairDb*2)
          {
              //3
              case 6:
@@ -71,6 +72,40 @@ public class BoardSetup : MonoBehaviour
                  break;
          }
 
+        // We get the grid component
+        var grid = board.GetComponent<GridLayoutGroup>();
+
+        //How big our screen is, minus the padding. We can't draw on the padding so we don't calculate with it
+        float screenWidth = Screen.width - (grid.padding.left + grid.padding.right);
+        float screenHeight = Screen.height - (grid.padding.top + grid.padding.bottom);
+
+        // For full flexibility we also set the the aspect ration we have to satisfy
+        board.GetComponent<AspectRatioFitter>().aspectRatio = screenWidth / screenHeight;
+
+        // We divide the screen by how much element we want there. if we have a 1080 width and want 2 columns then we have a size of 1080/2. (remember that padding is already lovered that number)
+        // We also subtract the spacing because we can't draw on it. Remeber that we here calculate the size of one cell so we don't have to multiply it by the element number
+        float newWidth = (screenWidth / width) - grid.spacing.x;
+        Debug.Log(newWidth);
+        float newHeight = (screenHeight / height) - grid.spacing.y;
+        Debug.Log(newHeight);
+
+        //TODO 1:1 cards
+        // for 1:1 ratio of the cards we do a little trick
+        //float GoodRatio = newHeight < newWidth ? newHeight : newWidth;
+
+        //// we also increase the spacing to make our elements "biggger"
+        //float increase = Math.Abs(newHeight - newWidth) / 2;
+        //grid.spacing = new Vector2(grid.spacing.x, grid.spacing.y + increase);
+
+        grid.cellSize = new Vector2(newWidth, newHeight);
+
+
+        for (int i = 0; i < pairDb * 2; i++)
+        {
+            AddCardToBoard();
+        }
+
+        /*
          //mainCamera.fieldOfView = 77;
          //mainCamera.aspect = Screen.width / Screen.height;
 
@@ -98,12 +133,6 @@ public class BoardSetup : MonoBehaviour
 
          }*/
 
-
-        for (int i = 0; i < pairDb * 2; i++)
-        {
-            AddCardToBoard();
-        }
-
         /*for (int i = 0; i < height; i++)
         {
             x = basex;
@@ -114,7 +143,7 @@ public class BoardSetup : MonoBehaviour
                 x += cardsize+gap;
             }
             y -= cardsize+gap;
-        }  */    
+        }  */
     }
 
     private void AddCardToBoard()
