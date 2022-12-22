@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 25
     m_Right: 25
-    m_Top: 75
-    m_Bottom: 75
+    m_Top: 25
+    m_Bottom: 25
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
